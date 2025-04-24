@@ -412,14 +412,14 @@ input[type="text"] {
 }
 
 /* Today's Festival Box */
-.festival-footer {
+/* .festival-footer {
   margin-top: 10px;
   padding: 10px;
   border-radius: 12px 12px 0 0;
   transition: all 0.3s ease;
   max-height: 340px;
   overflow-y: auto;
-}
+} */
 
 .festival-footer h4 {
   font-size: 16px;
@@ -433,13 +433,13 @@ input[type="text"] {
 
 .festival-footer p {
   font-size: 14px;
-  color: #f1f1f1;
+  color: #000000;
   margin: 5px 0;
   line-height: 1.4;
 }
 
 .festival-footer strong {
-  color: #1e5086;
+  color: #ffffff;
 }
 
 /* Scrollbar styling for overflow */
@@ -451,6 +451,62 @@ input[type="text"] {
   background-color: #ccc;
   border-radius: 10px;
 }
+.festival-footer {
+  background-color: none;
+  padding: 1rem;
+  overflow-x: auto;
+  color: white;
+}
+
+.vertical-festival-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  font-family: sans-serif;
+}
+.month-festivals {
+  max-height: 300px; /* Adjust as needed */
+  overflow-y: auto;
+  padding-right: 0.5rem; /* Optional: for space next to scrollbar */
+}
+
+/* Optionally add a nice scrollbar style (Webkit browsers only) */
+.month-festivals::-webkit-scrollbar {
+  width: 8px;
+}
+
+.month-festivals::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+
+.month-festivals h4,
+.today-festival h4 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  white-space: normal;
+}
+
+/* ✅ Changed from row to column and removed nowrap */
+.month-festivals ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  white-space: normal;
+}
+
+/* ✅ No need for inline-block or nowrap anymore */
+.month-festivals li {
+  display: block;
+  white-space: normal;
+}
+
+
 
 /* Mobile responsive */
 @media (max-width: 600px) {
@@ -477,53 +533,12 @@ input[type="text"] {
   font-size: 16px;
   margin-bottom: 8px;
   font-weight: 500;
-  color: #f1f1f1;
+  color: #000000;
   display: flex;
   align-items: center;
   text-align: center;
 }
 
-/* Monthly Festivals List */
-.month-festivals {
-  background: linear-gradient(to bottom, #fffdf5, #fff8e1);
-  border: 2px solid #fcd34d;
-  border-radius: 12px;
-  padding: 18px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  max-height: 280px;
-  overflow-y: auto;
-  font-size: 14px;
-  animation: fadeInUp 0.6s ease-in-out;
-  margin: 10px 0;
-}
-
-.month-festivals h4 {
-  font-size: 20px;
-  color: #f57c00;
-  font-weight: bold;
-  margin-bottom: 10px;
-  border-bottom: 1px dashed #ffcc80;
-  padding-bottom: 4px;
-}
-
-.month-festivals ul {
-  list-style: decimal inside;
-  padding: 0;
-  margin: 0;
-}
-
-.month-festivals li {
-  background-color: #fff8e1;
-  padding: 8px 12px;
-  margin-bottom: 6px;
-  border-radius: 10px;
-  border-left: 5px solid #ffcc80;
-  transition: background-color 0.3s;
-}
-
-.month-festivals li:hover {
-  background-color: #ffe0b2;
-}
 
 /* Responsive improvements */
 @media (max-width: 600px) {
