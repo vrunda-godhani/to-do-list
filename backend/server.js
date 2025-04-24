@@ -93,7 +93,7 @@ const authenticateToken = (req, res, next) => {
 
         results = results.map(task => ({
             ...task,
-            task_date: task.task_date ? new Date(task.task_date + "Z").toISOString() : null // Ensure correct timezone
+            task_date:task.task_date ? new Date(task.task_date).toISOString() : null
         }));
 
         res.json(results);

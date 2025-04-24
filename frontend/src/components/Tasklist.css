@@ -229,7 +229,7 @@ input[type="text"] {
 
 .button-container {
   display: flex;
-  margin-left: auto;
+  /* margin-left: auto; */
 }
 
 
@@ -541,7 +541,7 @@ input[type="text"] {
 
 
 /* Responsive improvements */
-@media (max-width: 600px) {
+@media (max-width: 400px) {
   .month-festivals,
   .today-festival {
     padding: 14px;
@@ -623,7 +623,22 @@ input[type="text"] {
   background-color: rgba(30, 80, 134, 0.496) !important ;
   color: black;
 }
+.check-btn{
+  background-color: #1e5086;
+  border-radius: 10px;
+  height: 40px;
+  border: 2px solid white;
+  color: white;
+  cursor: pointer;
+  padding: 5px 10px;
+  font-size: 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
+}
+.check-btn:hover{
+  background-color: rgba(30, 80, 134, 0.496) !important ;
+  color: black;
+}
 .toggle-task {
   cursor: pointer;
 }
@@ -811,4 +826,136 @@ ul {
   font-size: 16px;
   font-weight: bold;
   transition: 0.3s ease;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Mobile View Styles */
+@media (max-width: 600px) {
+  .tasklist {
+    padding: 10px;
+  }
+
+  .task-item {
+    display: flex;
+    flex-direction: row !important;        /* Keep content in a row */
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    width: 100% !important;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+  
+  .tsk-btn {
+    padding: 5px 8px;
+    font-size: 14px;
+    max-width: 90px;
+  }
+.toggle-task{
+  width: 100%;
+text-align: left;
+display: flex;
+}
+/* 
+.check-btn{
+ width: 60px; 
+ text-align: right;
+display: flex;
+margin-left: 0;
+left: 0;
+} */
+
+
+  .task-box {
+    grid-template-columns: 1fr !important;
+    padding: 0 10px;
+  }
+
+  ul {
+    grid-template-columns: 1fr !important;
+    grid-gap: 10px;
+  }
+
+  .task-h1,
+  .task-h2 {
+    font-size: 24px;
+  }
+
+  .prio-btn {
+    width: 100%;
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .popup-content {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .popup input,
+  .popup select {
+    font-size: 14px;
+  }
+
+  .dropdown-container {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .dropdown-select {
+    width: 100%;
+  }
+
+  .cal-box {
+    padding: 15px;
+    max-width: 100%;
+  }
+
+  .menu-options {
+    width: 200px;
+  }
+
+  .menu-options-btn {
+    font-size: 14px;
+  }
+
+  .festival-footer,
+  .month-festivals,
+  .today-festival {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .popup button {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .task-hover .tooltip {
+    font-size: 10px;
+    top: -20px;
+  }
+
+  .button-container {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .menu-button {
+    font-size: 18px;
+    padding: 8px 12px;
+  }
 }

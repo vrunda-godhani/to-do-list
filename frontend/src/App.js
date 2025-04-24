@@ -53,17 +53,19 @@ function App() {
 
     }
   }, [selectedDate, isAuthenticated]); //  Ensure `isAuthenticated` is required before fetching
-
-
   const formatToLocalISOString = (date) => {
-    const tzOffset = date.getTimezoneOffset() * 60000;
-    const localDate = new Date(date - tzOffset);
+    // Simply get YYYY-MM-DDTHH:MM of your local date
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
     
-    // Format YYYY-MM-DDTHH:MM
-    const formatted = localDate.toISOString().slice(0, 16);
-    console.log("Formatted Date with Current Time:", formatted);
+    const formatted = `${year}-${month}-${day}T${hours}:${minutes}`;
+    console.log("Formatted Date without timezone shift:", formatted);
     return formatted;
-};
+  };
+  
 
 
   const addTask = async ({ task_text, task_date, priority }) => {
@@ -128,12 +130,13 @@ const fetchTasks = async (date) => {
         headers: { Authorization: `Bearer ${token}` },
       });
 
-      await fetchTasks();
+      await fetchTasks(selectedDate);
     } catch (error) {
       console.error("Error deleting task:", error);
       toast.error("Failed to delete task.");
     }
   };
+
   const updateTask = async (updatedTask) => {
     try {
       const token = localStorage.getItem("authToken");
@@ -154,7 +157,12 @@ const fetchTasks = async (date) => {
       console.log("update task:", updatedTask.task_date)
 
       toast.success("Task updated successfully!");
-      await fetchTasks(); // Refresh the UI
+      // await fetchTasks(new Date(updatedTask.task_date)); // Pass it explicitly
+      await fetchTasks(
+        isNaN(new Date(updatedTask.task_date).getTime()) 
+          ? selectedDate 
+          : updatedTask.task_date
+      );
     } catch (error) {
       console.error("Error updating task:", error.response?.data || error.message);
       toast.error("Failed to update task.");

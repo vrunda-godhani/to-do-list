@@ -3,6 +3,9 @@ import ReactCalendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "./Tasklist.css";
 import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const Calendar = ({ onDateChange, tasks, onFestivalSelect, setAllFestivals }) => {
   const [holidays, setHolidays] = useState([]);
@@ -15,42 +18,68 @@ const Calendar = ({ onDateChange, tasks, onFestivalSelect, setAllFestivals }) =>
     const year = d.getFullYear();
     return `${day}/${month}/${year}`;
   };
-
   useEffect(() => {
     const fetchHolidays = async () => {
-      const apiKey = "2TdrZiWMvWXSfRdDk3Wc5cupmkQXyQkH"; // Replace with your real Calendarific API key
+      const apiKey = "TEnH5h7dgwtF3C8b1ZzeDQxnKoQvBpRd";
+      const cached = localStorage.getItem("cachedHolidays");
+      const cachedDate = localStorage.getItem("cachedDate");
+  
+      const today = new Date().toISOString().split("T")[0];
+  
+      if (cached && cachedDate === today) {
+        const all = JSON.parse(cached);
+        setHolidays(all.map(h => formatDate(h.date.iso)));
+        setFullHolidays(all);
+        setAllFestivals(all);
+        checkTodayCelebration(all);
+        return;
+      }
+  
       try {
         const response = await axios.get(
-          `https://calendarific.com/api/v2/holidays?&api_key=${apiKey}&country=IN&year=2025`
+          `https://calendarific.com/api/v2/holidays?api_key=${apiKey}&country=IN&year=2025`
         );
-
+  
         const all = response.data.response.holidays;
-        const holidayDates = all.map(h => formatDate(h.date.iso));
-
-        setHolidays(holidayDates);
+        localStorage.setItem("cachedHolidays", JSON.stringify(all));
+        localStorage.setItem("cachedDate", today);
+  
+        setHolidays(all.map(h => formatDate(h.date.iso)));
         setFullHolidays(all);
+        setAllFestivals(all);
         checkTodayCelebration(all);
-        setAllFestivals(all); // expose all holidays to TaskList
-
       } catch (error) {
         console.error("Failed to fetch holidays:", error);
+        // Optional fallback message
+        toast.error("Rate limit reached. Try again later.");
       }
     };
-
-
+  
     const checkTodayCelebration = (all) => {
       const todayStr = formatDate(new Date());
       const todayFestival = all.find(h => formatDate(h.date.iso) === todayStr);
-
-      if (todayFestival) {
-        onFestivalSelect(todayFestival);
-      } else {
-        onFestivalSelect({ name: "No celebration today 🎈" });
-      }
+  
+      onFestivalSelect(todayFestival || { name: "No celebration today 🎈" });
     };
-
+  
     fetchHolidays();
   }, []);
+  
+
+
+    //   const checkTodayCelebration = (all) => {
+    //     const todayStr = formatDate(new Date());
+    //     const todayFestival = all.find(h => formatDate(h.date.iso) === todayStr);
+
+    //     if (todayFestival) {
+    //       onFestivalSelect(todayFestival);
+    //     } else {
+    //       onFestivalSelect({ name: "No celebration today 🎈" });
+    //     }
+    //   };
+
+    //   fetchHolidays();
+    // }, []);
 
   const tileClassName = ({ date, view }) => {
     if (view === "month") {

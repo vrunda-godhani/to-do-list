@@ -136,35 +136,20 @@ const TaskList = ({ selectedDate, tasks, filteredTasks, onAddTask, onDeleteTask,
     };
 
 
+
     const handleOpenPopup = (task) => {
+        setShowPopup(true);
         setCurrentTask(task);
         setTaskText(task.task_text);
-        setTaskPriority(task.priority);
 
-        // Convert backend datetime string ("YYYY-MM-DD HH:MM:SS") into an ISO string by replacing the space with "T"
-        const isoDateString = task.task_date.replace(" ", "T");
-        const taskDateTime = new Date(isoDateString);
+        const taskDate = new Date(task.task_date);
+        const task_date = taskDate.toISOString().split("T")[0];
+        const task_time = taskDate.toTimeString().slice(0, 5); // HH:MM format
 
-        // Extract date in YYYY-MM-DD format
-        const formattedDate = taskDateTime.toISOString().split("T")[0];
-
-        // Extract time in HH:MM (24-hour format)
-        const formattedTime = taskDateTime.toLocaleTimeString("en-US", {
-            hour: "2-digit",
-            minute: "2-digit",
-            hour12: false,
-        });
-
-        console.log("Opening Edit Popup with:", formattedDate, formattedTime);
-
-        // Set editing task with separate date and time
-        setEditingTask({
-            ...task,
-            task_date: formattedDate,
-            task_time: formattedTime,
-        });
-
-        setShowPopup(true);
+        console.log("📆 Parsed Task Date:", task_date);
+        console.log("⏰ Parsed Task Time:", task_time);
+        setEditingTask({ task_date, task_time });
+        setTaskPriority(task.priority || "normal");
     };
 
 
@@ -179,35 +164,32 @@ const TaskList = ({ selectedDate, tasks, filteredTasks, onAddTask, onDeleteTask,
 
     const updateTask = async () => {
         if (!currentTask || !editingTask.task_date || !editingTask.task_time) {
-            toast.warn("Please select a valid date and time.");
+            toast.warn("Please enter a valid date and time.");
             return;
         }
 
         try {
-            // Combine the updated date and time into a complete datetime string (YYYY-MM-DDTHH:MM:SS)
-            const updatedDateTime = `${editingTask.task_date}T${editingTask.task_time}:00`;
+            // Ensure proper zero-padding for hours and minutes if needed
+            const time = editingTask.task_time.length === 5 ? editingTask.task_time : "00:00";
+
+            // Combine the updated date and time into a valid ISO string
+            const updatedDateTime = `${editingTask.task_date}T${time}:00`;
 
             const updatedTask = {
                 id: currentTask.id,
                 task_text: taskText.trim() || currentTask.task_text,
-                task_date: updatedDateTime, // updated datetime
+                task_date: updatedDateTime,
                 priority: taskPriority,
             };
 
-            console.log("Updating Task:", updatedTask); // Debugging log
+            console.log("✅ Updating Task:", updatedTask);
 
-            // Update the task on the backend
-            await onUpdateTask(updatedTask);
-
+            await onUpdateTask(updatedTask); // Call parent update
             toast.success("Task updated successfully!");
 
-            // Refresh tasks so that the updated task is now reflected in the list
-            await fetchTasks();
+            await fetchTasks(new Date(updatedDateTime)); // Ensure fetch uses a valid Date object
 
-            // Optionally, if you want to update your local editingTask state with the new values:
-            setEditingTask(updatedTask);
-
-            // Close the edit popup
+            setEditingTask(null);
             handleClosePopup();
         } catch (error) {
             console.error("🔥 Error updating task:", error);
@@ -262,7 +244,7 @@ const TaskList = ({ selectedDate, tasks, filteredTasks, onAddTask, onDeleteTask,
                                 </span>
                                 <div className="button-container">
                                     <button
-                                        className="tsk-btn"
+                                        className="check-btn"
                                         onClick={(event) => {
                                             event.stopPropagation(); // Prevents triggering parent click event
                                             handleToggleTaskDone(task.id);
