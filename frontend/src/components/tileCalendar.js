@@ -20,7 +20,7 @@ const Calendar = ({ onDateChange, tasks, onFestivalSelect, setAllFestivals }) =>
   };
   useEffect(() => {
     const fetchHolidays = async () => {
-      const apiKey = "TEnH5h7dgwtF3C8b1ZzeDQxnKoQvBpRd";
+      const apiKey = "llLsEQ1gQmyY2e9mwQ5TJuyrHNDTqpMr";
       const cached = localStorage.getItem("cachedHolidays");
       const cachedDate = localStorage.getItem("cachedDate");
   

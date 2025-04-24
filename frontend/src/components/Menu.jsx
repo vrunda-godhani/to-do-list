@@ -121,11 +121,12 @@ const Menu = ({ selectedFestival, showMonthCelebrations, setSelectedFestival, al
 
           {/* Navigate to Home (TaskList) */}
           <button className="menu-options-btn" onClick={() => { handleMenuOptionClick(); navigate("/tasklist"); }}>
-            Home
+          
+          📋 Home
           </button>
 
           <button className="menu-options-btn" onClick={() => { setModalStatus(true); handleShareButtonClick(); }}>
-            Share
+          🔗 Share
           </button>
 
           {showShareButton && (
@@ -133,7 +134,7 @@ const Menu = ({ selectedFestival, showMonthCelebrations, setSelectedFestival, al
               <div onClick={() => setModalStatus(false)} className={`ModalOverlay ${modalStatus ? "modalshow" : ""}`}></div>
               <div onClick={() => setModalStatus(false)} className={`Modaldiv ${modalStatus ? "showModaldiv" : ""}`}>
                 <div className="shareContainer">
-                  <h5> Share</h5>
+                  <h5>📤 Share</h5>
                   <button className="shareSubBtn"><IoMdClose /></button>
                 </div>
                 <hr class="horizontal-line" />
@@ -160,11 +161,11 @@ const Menu = ({ selectedFestival, showMonthCelebrations, setSelectedFestival, al
           )}
 
           <Link to="/Theme">
-            <button className="outer-button menu-options-btn" onClick={() => { notifyTheme(); handleMenuOptionClick(); }}>Full Calender</button>
+            <button className="outer-button menu-options-btn" onClick={() => { notifyTheme(); handleMenuOptionClick(); }}>📅 Full Calender</button>
           </Link>
 
           <Link to="/notes">
-            <button className="menu-options-btn" onClick={handleMenuOptionClick}>Notes</button>
+            <button className="menu-options-btn" onClick={handleMenuOptionClick}>📝 Notes</button>
           </Link>
 
           {/* <button className="menu-options-btn" onClick={() => setShowSubButton(!showSubButton)}>
@@ -173,17 +174,18 @@ const Menu = ({ selectedFestival, showMonthCelebrations, setSelectedFestival, al
 
           {/* <div className={`sub-menu ${showSubButton ? "show" : ""}`}> </div>*/}
           <Link to="/Weather">
-            <button className="menu-options-btn">Weather</button>
+            <button className="menu-options-btn">🌤️ Weather</button>
           </Link>
           {/* <Link to='/Calculator'>
         <button className="sub-button menu-options-btn">➤ Calculator</button>
         </Link> */}
 
           <Link to="/Weeklyplanner">
-            <button className="menu-options-btn">Weekly Planner</button>
+            <button className="menu-options-btn">🗓️ Weekly Planner</button>
           </Link>
           <button className="menu-options-btn" onClick={handleToggleMonthCelebrations}>
-            📅 This Month's Festivals
+          
+          🌟 Month's Festivals
           </button>
 
           <div className="festival-footer">
@@ -193,9 +195,11 @@ const Menu = ({ selectedFestival, showMonthCelebrations, setSelectedFestival, al
       <ul>
         {selectedFestival?.festivals?.length > 0 ? (
           selectedFestival.festivals.map((festival, i) => (
-            <li key={i}>
-              <strong>{formatDate(festival.date.iso)}</strong> — {festival.name}
-            </li>
+            <li key={i} className="festival-item">
+            <span className="festival-date">{formatDate(festival.date.iso)}</span>
+            <span className="festival-name">— {festival.name}</span>
+          </li>
+          
           ))
         ) : (
           <p>No festivals this month!</p>

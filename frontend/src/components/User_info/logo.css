@@ -7,7 +7,7 @@
   .app-icon {
     width: 70%;
     height: 70%;
-    /* border-radius: 20px; */
+    border-radius: 10px;
     background-color: aliceblue;
 
   }
@@ -20,8 +20,8 @@
     color: white;
     font-weight: bold;
     border-radius: 50% !important;
-    padding: 4px 6px !important;
-    font-size: 10px !important;
+    padding: 3px 5px !important;
+    font-size: 12px !important;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
     text-align: center !important;
     align-items: center !important;
