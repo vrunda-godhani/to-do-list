@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import './Login.css';
 import LoginAuth from "./LoginAuth"; // Import GoogleAuth component
+import {  FaEye, FaEyeSlash } from "react-icons/fa";
 
 const API_URL = "http://localhost:5000"; // Ensure this matches your backend
 
@@ -13,6 +14,7 @@ const Login = ({ onLoginSuccess, togglePage }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -57,16 +59,23 @@ const Login = ({ onLoginSuccess, togglePage }) => {
           </div>
 
           <div className="input-group">
-            <span className="input-group-text"><FaLock /></span>
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="form-control"
-              required
-            />
-          </div>
+  <span className="input-group-text"><FaLock /></span>
+  <input
+    type={showPassword ? "text" : "password"}
+    placeholder="Password"
+    value={password}
+    onChange={(e) => setPassword(e.target.value)}
+    className="form-control"
+    required
+  />
+  <span
+    className="input-group-text"
+    onClick={() => setShowPassword((prev) => !prev)}
+    style={{ cursor: "pointer" }}
+  >
+    {showPassword ? <FaEyeSlash /> : <FaEye />}
+  </span>
+</div>
 
           <button type="submit" className="lr-btn" disabled={loading}>
             {loading ? "Logging in..." : "Log In"}

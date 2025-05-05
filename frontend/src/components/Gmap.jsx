@@ -1,10 +1,12 @@
-import React, { useState, Suspense } from "react";
+import React, { useState, Suspense, useEffect } from "react";
 import axios from "axios";
 import "./Gmap.css"; // Import CSS file
 import { IoArrowBackCircle } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { TiWeatherPartlySunny } from "react-icons/ti";
 import Menu from "./Menu";
+import { useLocation } from "react-router-dom";
+
 
 // Lazy Load Google Maps Components
 const LoadScript = React.lazy(() => import("@react-google-maps/api").then(module => ({ default: module.LoadScript })));
@@ -24,7 +26,31 @@ function WeatherMap() {
   const [address, setAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate(); 
+  const locationState = useLocation();
+  const { city, country } = locationState.state || {};
 
+  useEffect(() => {
+    const fetchCoordinatesFromCity = async () => {
+      if (city && country) {
+        try {
+          const response = await axios.get(
+            `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(city + ", " + country)}&key=${GOOGLE_MAPS_API_KEY}`
+          );
+          const result = response.data.results[0];
+          if (result) {
+            const { lat, lng } = result.geometry.location;
+            setLocation({ lat, lng });
+            setAddress(result.formatted_address);
+          }
+        } catch (error) {
+          console.error("Failed to geocode city:", error);
+        }
+      }
+    };
+  
+    fetchCoordinatesFromCity();
+  }, [city, country]);
+  
   const handleMapClick = async (event) => {
     const lat = event.latLng.lat();
     const lng = event.latLng.lng();
@@ -46,15 +72,20 @@ function WeatherMap() {
         const components = geocodeRes.data.results[0].address_components;
         let city = "";
         let country = "";
-
+        
         for (const comp of components) {
-          if (comp.types.includes("locality")) {
-            city = comp.long_name;
+          if (
+            comp.types.includes("locality") ||
+            comp.types.includes("administrative_area_level_1") ||
+            comp.types.includes("administrative_area_level_2")
+          ) {
+            city = city || comp.long_name;
           }
           if (comp.types.includes("country")) {
             country = comp.long_name;
           }
         }
+        
 
         setAddress(city ? `${city}, ${country}` : "Location not found");
       } else {

@@ -134,7 +134,7 @@ const Menu = ({ selectedFestival, showMonthCelebrations, setSelectedFestival, al
               <div onClick={() => setModalStatus(false)} className={`ModalOverlay ${modalStatus ? "modalshow" : ""}`}></div>
               <div onClick={() => setModalStatus(false)} className={`Modaldiv ${modalStatus ? "showModaldiv" : ""}`}>
                 <div className="shareContainer">
-                  <h5>📤 Share</h5>
+                  <h5>Share</h5>
                   <button className="shareSubBtn"><IoMdClose /></button>
                 </div>
                 <hr class="horizontal-line" />

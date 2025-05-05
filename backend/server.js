@@ -301,7 +301,6 @@ app.post("/tasks", authenticateToken, (req, res) => {
         return res.status(400).json({ message: "Task text, date, and priority are required." });
     }
 
-    // Convert date to UTC before storing
     const taskDateLocal = task_date.replace("T", " ") + ":00";
 
     const query = "INSERT INTO tasks (user_id, task_text, task_date, priority) VALUES (?, ?, ?, ?)";
@@ -314,8 +313,9 @@ app.post("/tasks", authenticateToken, (req, res) => {
             message: "Task added successfully.",
             task_id: result.insertId,
         });
-    });    
+    });
 });
+
 
  
 

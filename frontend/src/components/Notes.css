@@ -244,7 +244,7 @@
 }
 
 .notes-delete-btn {
-  background-color: #d32f2f;
+  background-color: #d32f2f !important;
   color: white;
   width: 90px;
 

@@ -9,7 +9,6 @@ import Login from "./components/Login.jsx";
 import Notes from "./components/Notes.jsx";
 import Menu from "./components/Menu.jsx";
 import Gmap from "./components/Gmap.jsx";
-import Calculator from "./components/Calculator.jsx";
 import Me from "./components/User_info/Me.js";
 import Tskhistory from "./components/User_info/Tskhistory"; // ✅ Import Task History
 import Weather from "./components/Weather.jsx";
@@ -283,7 +282,6 @@ const fetchTasks = async (date) => {
             <Route path="/notes" element={<Notes handleLogout={handleLogout} />} />
             <Route path="/Me" element={<Me handleLogout={handleLogout} />} />
             <Route path="/Weather" element={<Weather handleLogout={handleLogout} />} />
-            <Route path="/Calculator" element={<Calculator handleLogout={handleLogout} />} />
             <Route path="/Gmap" element={<Gmap handleLogout={handleLogout} />} />
             <Route path="/menu" element={<Menu />} />
             <Route path="/Tskhistory" element={<Tskhistory />} /> {/* ✅ Add Route */}

@@ -137,8 +137,13 @@ export default function Weather() {
   };
 
   const handlelocationbtn = () => {
-    navigate("/Gmap");
-  };
+    navigate("/Gmap", {
+      state: {
+        city: city?.value || null,
+        country: country?.value || null
+      }
+    });
+      };
   
 
   return (
