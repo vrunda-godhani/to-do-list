@@ -15,6 +15,7 @@ import Weather from "./components/Weather.jsx";
 import Register from "./components/Register.jsx"; // Register Component
 import AuthTogglePage from "./components/Authtogglepage.jsx"; // Register Component
 import WeeklyPlanner from "./components/WeeklyPlanner.js"
+// import ForgotPin from "./components/ForgotPin.jsx";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -286,7 +287,7 @@ const fetchTasks = async (date) => {
             <Route path="/menu" element={<Menu />} />
             <Route path="/Tskhistory" element={<Tskhistory />} /> {/* ✅ Add Route */}
             <Route path="/WeeklyPlanner" element={<WeeklyPlanner />} /> 
-
+            {/* <Route path="/forgot-pin" element={<ForgotPin />} /> */}
 
             {/* Catch-All Route */}
             <Route path="*" element={<Navigate to="/login" replace />} />

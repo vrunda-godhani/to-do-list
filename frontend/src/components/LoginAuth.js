@@ -28,11 +28,19 @@ const LoginAuth = ({ onSuccess }) => {
   };
 
   return (
+    // <GoogleLogin
+    //   onSuccess={handleSuccess}
+    //   onError={() => console.log("Google Login Failed")}
+    // />
     <GoogleLogin
-      onSuccess={handleSuccess}
-      onError={() => console.log("Google Login Failed")}
-      
-    />
+  onSuccess={handleSuccess}
+  onError={() => console.log("Login Failed")}
+  useOneTap={false}
+  theme="outline"
+  text="signin_with"
+  shape="rectangular"
+/>
+
   );
 };
 

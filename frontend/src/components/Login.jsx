@@ -7,6 +7,8 @@ import "react-toastify/dist/ReactToastify.css";
 import './Login.css';
 import LoginAuth from "./LoginAuth"; // Import GoogleAuth component
 import {  FaEye, FaEyeSlash } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+// import "./ForgotPin.jsx";
 
 const API_URL = "http://localhost:5000"; // Ensure this matches your backend
 
@@ -15,6 +17,7 @@ const Login = ({ onLoginSuccess, togglePage }) => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -83,6 +86,7 @@ const Login = ({ onLoginSuccess, togglePage }) => {
         </form>
 
         {/* 🔹 Google Login */}
+        <div className="google-login">
         <LoginAuth
           onSuccess={(backendToken) => { // ✅ Receive backend token from GoogleAuth
             console.log("Google Login Successful:", backendToken);
@@ -93,6 +97,7 @@ const Login = ({ onLoginSuccess, togglePage }) => {
             }
           }}
         />
+        </div>
         {/* <GoogleAuth
   onLogin={async (googleToken) => {
     try {
@@ -108,6 +113,16 @@ const Login = ({ onLoginSuccess, togglePage }) => {
 /> */}
 
 
+{/* <p className="forgot-pin">
+  Forgot your PIN?{" "}
+  <span
+    onClick={() => navigate("/forgot-pin")}
+    style={{ color: "blue", cursor: "pointer", textDecoration: "underline" }}
+  >
+    Click here
+  </span>
+</p> */}
+
 
         <button onClick={togglePage} className="toggle-btn">
           Don't have an account? Register here
@@ -118,3 +133,15 @@ const Login = ({ onLoginSuccess, togglePage }) => {
 };
 
 export default Login;
+
+
+
+
+
+
+
+
+
+
+
+

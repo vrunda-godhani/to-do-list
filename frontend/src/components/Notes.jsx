@@ -176,7 +176,7 @@ const Notes = ( {handleLogout} ) => {
           onClick={() => openPopup(note)}
           style={{ backgroundColor: colors[index % colors.length] }}
         >
-          <p><strong>{highlight(firstLine)}</strong></p>
+          <p><strong style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap"}}>{highlight(firstLine)}</strong></p>
           {remainingText.split("\n").map((line, i) => (
             <p className="note-text" key={i}>{highlight(line)}</p>
           ))}
@@ -186,7 +186,6 @@ const Notes = ( {handleLogout} ) => {
 ) : (
   ""
 )}
-
 
         {/* Add Note Button - Styled Like a Note Box */}
         {!showTextarea && (

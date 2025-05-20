@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Login.css";
 import GoogleAuth from "./GoogleAuth"; // Import GoogleAuth component
+import {  FaEye, FaEyeSlash } from "react-icons/fa";
 
 const API_URL = "http://localhost:5000"; // Ensure this matches your backend
 
@@ -14,6 +15,7 @@ const Register = ({ onRegisterSuccess, togglePage }) => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [isEmailVerified, setIsEmailVerified] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -66,9 +68,10 @@ const Register = ({ onRegisterSuccess, togglePage }) => {
 
         <div className="input-group">
           <span className="input-group-text"><FaLock /></span>
+         
           <input
-            type="password"
-            placeholder="Password"
+    type={showPassword ? "text" : "password"}
+    placeholder="Password"
             value={password}
             onChange={(e) => {
               setPassword(e.target.value);
@@ -77,6 +80,13 @@ const Register = ({ onRegisterSuccess, togglePage }) => {
             className="form-control"
             required
           />
+            <span
+              className="input-group-text"
+              onClick={() => setShowPassword((prev) => !prev)}
+              style={{ cursor: "pointer" }}
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </span>
         </div>
 
         {isEmailVerified && (
@@ -88,7 +98,8 @@ const Register = ({ onRegisterSuccess, togglePage }) => {
         {email && password && !isEmailVerified && (
           <div className="mt-3">
             <p className="text-muted">Verify your email via Google before registering:</p>
-            <GoogleAuth
+           <div className="google-login">
+            <GoogleAuth 
   onVerify={async (googleToken) => {
     try {
       const response = await axios.post(`${API_URL}/register/verify-email`, {
@@ -104,9 +115,8 @@ const Register = ({ onRegisterSuccess, togglePage }) => {
       toast.error(err.response?.data?.message || "❌ Verification failed.");
     }
   }}
-/>
-
-
+/> 
+</div>
           </div>
         )}
 
@@ -118,6 +128,7 @@ const Register = ({ onRegisterSuccess, togglePage }) => {
           {loading ? "Registering..." : "Register"}
         </button>
       </form>
+      
 
       <button onClick={togglePage} className="toggle-btn">
         Already have an account? Login here

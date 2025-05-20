@@ -88,45 +88,47 @@ export default function Me({ handleLogout }) {
   //   animationData: animationData,
   // };
 
-  const handleAvatarChange = (e) => {
+  // const handleAvatarChange = (e) => {
+  //   const file = e.target.files[0];
+  //   if (file) {
+  //     const imageUrl = URL.createObjectURL(file);
+  //     setAvatar(imageUrl);
+  //     localStorage.setItem("userAvatar", imageUrl);
+  //     setIsEditing(false);
+  //   }
+  // };
+  const handleAvatarChange = async (e) => {
     const file = e.target.files[0];
-    if (file) {
-      const imageUrl = URL.createObjectURL(file);
+    if (!file) return;
+  
+    const formData = new FormData();
+    formData.append("avatar", file);
+  
+    try {
+      const token = localStorage.getItem("authToken");
+      const res = await axios.post(`${API_URL}/upload-avatar`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
+        },
+      });
+  
+      const { imageUrl } = res.data;
       setAvatar(imageUrl);
       localStorage.setItem("userAvatar", imageUrl);
       setIsEditing(false);
+    } catch (err) {
+      console.error("Failed to upload avatar", err);
     }
   };
+  
 
   const handleDeletePicture = () => {
     setAvatar("default-avatar.png"); // Reset to default image
     localStorage.removeItem("userAvatar");
     setIsEditing(false);
   };
-  // const handleAvatarChange = async (e) => {
-  //   const file = e.target.files[0];
-  //   if (!file) return;
 
-  //   const formData = new FormData();
-  //   formData.append("avatar", file);
-
-  //   try {
-  //     const token = localStorage.getItem("authToken");
-  //     const res = await axios.post(`${API_URL}/upload-avatar`, formData, {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //         "Content-Type": "multipart/form-data",
-  //       },
-  //     });
-
-  //     const { imageUrl } = res.data;
-  //     setAvatar(imageUrl);
-  //     localStorage.setItem("userAvatar", imageUrl);
-  //     setIsEditing(false);
-  //   } catch (err) {
-  //     console.error("Failed to upload avatar", err);
-  //   }
-  // };
 
 
   return (

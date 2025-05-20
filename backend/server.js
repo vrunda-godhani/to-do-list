@@ -44,6 +44,11 @@ const db = mysql.createPool({
     queueLimit: 0,
 });
 
+const multer = require("multer");
+const path = require("path");
+const fs = require("fs");
+
+
 // Verify MySQL Connection
 db.getConnection((err, connection) => {
     if (err) {
@@ -664,7 +669,67 @@ app.get("/weeklyplanner", authenticateToken, (req, res) => {
       res.status(200).json({ message: "Task deleted successfully" });
     });
   });
-        
+
+app.post("/forgot-pin", async (req, res) => {
+  const { email, newPin } = req.body;
+
+  if (!email || !newPin) {
+    return res.status(400).json({ message: "Email and new PIN are required." });
+  }
+
+  try {
+    const user = await getUserByEmail(email);
+    if (!user) {
+      return res.status(404).json({ message: "User not found." });
+    }
+
+    const hashedPin = bcrypt.hashSync(newPin, 10);
+
+    // Update the user's password (PIN)
+    db.query("UPDATE users SET password = ? WHERE email = ?", [hashedPin, email], (err) => {
+      if (err) {
+        console.error("Error updating PIN:", err);
+        return res.status(500).json({ message: "Server error." });
+      }
+
+      res.json({ message: "PIN updated successfully." });
+    });
+  } catch (error) {
+    console.error("Forgot PIN error:", error);
+    res.status(500).json({ message: "Server error." });
+  }
+});
+
+const UPLOAD_DIR = path.join(__dirname, "uploads");
+
+if (!fs.existsSync(UPLOAD_DIR)) {
+  fs.mkdirSync(UPLOAD_DIR);
+}
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, UPLOAD_DIR);
+    },
+    filename: (req, file, cb) => {
+      const ext = path.extname(file.originalname);
+      const filename = `${Date.now()}-${Math.round(Math.random() * 1e9)}${ext}`;
+      cb(null, filename);
+    },
+  });
+  app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+  const upload = multer({ storage });
+  app.post("/upload-avatar", authenticateToken, upload.single("avatar"), (req, res) => {
+    if (!req.file) {
+      return res.status(400).json({ message: "No file uploaded" });
+    }
+  
+    const imageUrl = `http://localhost:5000/uploads/${req.file.filename}`;
+  
+    // Optional: Save the image URL to the user's record in DB here
+  
+    res.status(200).json({ message: "Image uploaded successfully", imageUrl });
+  });
+    
 
 // Start Server
 app.listen(PORT, () => {

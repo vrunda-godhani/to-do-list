@@ -96,7 +96,7 @@ form {
   }
   .toggle-btn{
     width: 100%;
-    padding: 12px;
+    padding: 10px;
     border: none;
     background-color: white;
   }
@@ -120,4 +120,14 @@ form {
     padding: 5px;
     text-align: center;
   }
-  
+  .google-login{
+    display: flex ;
+    text-align: center ;
+    align-items: center ;
+    gap: 0;
+    width: 100%;
+  }
+  .forgot-pin{
+    margin: 0;
+    padding-top: 5px;
+  }
