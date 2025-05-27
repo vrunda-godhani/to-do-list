@@ -1,6 +1,5 @@
 {
 
-  "homepage": "https://vrunda-godhani.github.io/to-do-list",
 
   "name": "to-do",
 
@@ -80,7 +79,7 @@
 
     "predeploy": "npm run build",
 
-    "deploy": "gh-pages -d build",
+  "deploy": "gh-pages -d build --no-clean",
 
     "build": "react-scripts build",
 
@@ -123,6 +122,12 @@
       "last 1 safari version"
 
     ]
+
+  },
+
+  "devDependencies": {
+
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
 
   }
 
