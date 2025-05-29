@@ -63,6 +63,8 @@ const db = mysql.createPool({
   },
 });
 
+
+
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
@@ -75,6 +77,9 @@ db.getConnection((err, connection) => {
         process.exit(1);
     }
     console.log("Connected to MySQL database.");
+    console.log("DATABASE_URL:", process.env.DATABASE_URL);
+console.log("Parsed host:", dbUrl.hostname);
+
     connection.release();
 });
 
