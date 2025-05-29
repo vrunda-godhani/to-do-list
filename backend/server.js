@@ -17,8 +17,12 @@ const PORT = 5000;
 const JWT_SECRET = process.env.JWT_SECRET_KEY;
 const { OAuth2Client } = require("google-auth-library"); // ✅ Import Google Auth Library
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID); // ✅ Use env variable
-const connectionString = process.env.DATABASE_URL;
-const params = new URL(connectionString);
+if (!process.env.DATABASE_URL) {
+  console.error("❌ DATABASE_URL is not defined in .env");
+  process.exit(1);
+}
+
+const dbUrl = new URL(process.env.DATABASE_URL);
 
 if (!JWT_SECRET) {
     console.error("FATAL ERROR: JWT_SECRET_KEY is missing!");
@@ -49,16 +53,16 @@ app.use(express.json());
 //     queueLimit: 0,
 // });
 const db = mysql.createPool({
-  host: params.hostname,
-  user: params.username,
-  password: params.password,
-  database: params.pathname.replace("/", ""),
-  port: params.port,
-  ssl: { rejectUnauthorized: true },
-  waitForConnections: true,
-    connectionLimit: 10,
-    queueLimit: 0,
+  host: dbUrl.hostname,
+  user: dbUrl.username,
+  password: dbUrl.password,
+  database: dbUrl.pathname.replace("/", ""),
+  port: dbUrl.port,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
+
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
