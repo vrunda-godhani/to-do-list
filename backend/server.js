@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+
 require("dotenv").config(); // Load environment variables
 // require("./reminderScheduler.js"); // Start cron job
 require("./reminderScheduler.js"); // ✅ Start cron job
