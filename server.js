@@ -13,7 +13,7 @@ const url = require("url");
 
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 const JWT_SECRET = process.env.JWT_SECRET_KEY;
 const { OAuth2Client } = require("google-auth-library"); // ✅ Import Google Auth Library
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID); // ✅ Use env variable
@@ -32,7 +32,7 @@ if (!JWT_SECRET) {
 // Enable CORS for frontend
 app.use(
     cors({
-        origin: "http://localhost:3000",
+origin: ["to-do-list-eta-liart-42.vercel.app", "http://localhost:3000"],
         methods: "GET,POST,PUT,DELETE",
         allowedHeaders: "Content-Type,Authorization",
     })
@@ -747,8 +747,10 @@ const storage = multer.diskStorage({
       return res.status(400).json({ message: "No file uploaded" });
     }
   
-    const imageUrl = `http://localhost:5000/uploads/${req.file.filename}`;
+    const imageUrl = `https://to-do-list-production-7667.up.railway.app/uploads/${req.file.filename}`;
   
+
+
     // Optional: Save the image URL to the user's record in DB here
   
     res.status(200).json({ message: "Image uploaded successfully", imageUrl });
