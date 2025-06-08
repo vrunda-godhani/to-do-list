@@ -11,8 +11,9 @@ import { toast } from "react-toastify";
 import "./Theme.css";
 import Menu from "./Menu";
 import axios from "axios"
-const API_URL = "http://localhost:5000"; //your backend URL
+// const API_URL = "http://localhost:5000"; //your backend URL
 
+const API_URL = "https://to-do-list-production-7667.up.railway.app";
 
 const Theme = ({ tasks, addTask }) => {
     const [showPopup, setShowPopup] = useState(false);

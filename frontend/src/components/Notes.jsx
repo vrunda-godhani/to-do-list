@@ -7,7 +7,10 @@ import Menu from "./Menu"; // Import Menu component
 import { FiList, FiGrid } from "react-icons/fi";
 import { navigate } from "react-router-dom"; // Import useNavigate
 
-const API_URL = "http://localhost:5000/notes"; // Backend API URL
+// const API_URL = "http://localhost:5000/notes"; // Backend API URL
+
+const API_URL = "https://to-do-list-production-7667.up.railway.app/notes";
+
 
 const Notes = ( {handleLogout} ) => {
   const [notes, setNotes] = useState([]);
