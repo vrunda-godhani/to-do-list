@@ -2,7 +2,10 @@ import axios from "axios";
 
 // Create Axios instance
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000/api", // Change this to your backend URL
+
+  // baseURL: "http://localhost:5000/api", // Change this to your backend URL
+  baseURL: "https://to-do-list-production-7667.up.railway.app/api", // Change this to your backend URL
+
 });
 
 // Request Interceptor: Attach token to requests
