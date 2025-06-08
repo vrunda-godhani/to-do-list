@@ -760,4 +760,6 @@ const storage = multer.diskStorage({
 // Start Server
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
+      require('./reminderScheduler'); // ✅ Start cron after app is live
+
 });
