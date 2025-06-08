@@ -30,12 +30,21 @@ if (!JWT_SECRET) {
 }
 
 // Enable CORS for frontend
+// app.use(
+//     cors({
+// origin: ["https://to-do-list-eta-liart-42.vercel.app", "http://localhost:3000"],
+//         methods: "GET,POST,PUT,DELETE",
+//         allowedHeaders: "Content-Type,Authorization",
+//     })
+// );
+
+
 app.use(
-    cors({
-origin: ["https://to-do-list-eta-liart-42.vercel.app", "http://localhost:3000"],
-        methods: "GET,POST,PUT,DELETE",
-        allowedHeaders: "Content-Type,Authorization",
-    })
+  cors({
+    origin: ["https://to-do-list-hvllb6ziv-vrunda-s-projects.vercel.app"],
+    methods: "GET,POST,PUT,DELETE",
+    allowedHeaders: "Content-Type,Authorization",
+  })
 );
 
 // Middleware
