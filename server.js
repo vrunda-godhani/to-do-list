@@ -124,6 +124,10 @@ const authenticateToken = (req, res, next) => {
       res.status(403).json({ message: "Invalid token." });
     }
   };
+  app.get("/", (req, res) => {
+  res.send("✅ Backend is running");
+});
+ 
   
   app.get("/tasks", authenticateToken, (req, res) => {
     db.query("SELECT * FROM tasks WHERE user_id = ?", [req.userId], (err, results) => {
