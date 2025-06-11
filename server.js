@@ -41,7 +41,7 @@ if (!JWT_SECRET) {
 
 app.use(
   cors({
-    origin: ["https://to-do-list-eta-liart-42.vercel.app"],
+    origin: ["https://to-do-list-by63axd8k-vrunda-s-projects.vercel.app"],
     methods: "GET,POST,PUT,DELETE",
     allowedHeaders: "Content-Type,Authorization",
   })
