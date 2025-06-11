@@ -1,0 +1,289 @@
+/* 🌍 Global Styles */
+.Wback-button {
+  position: absolute; /* Ensure it is positioned relative to its container */
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    font-size: 25px;
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    color: #0d2e52;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    right: 0;
+    margin: 10px;
+    top: 10px;
+    background: none;
+}
+
+.Wback-button:hover {
+  background-color: #e3eaf46e;
+  color: #1e5086;
+}
+
+  
+
+.weather-outer {
+  font-family: "Poppins", sans-serif; /* Modern font */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: url('https://t4.ftcdn.net/jpg/09/83/99/33/360_F_983993329_6Fyck7K3x6NT9X1kJyfhy70dVdyezYvv.jpg') no-repeat center center fixed;
+  background-size: cover; /* Ensures the image covers the whole screen */
+  background-attachment: fixed; /* Keeps the image fixed while scrolling */
+  color: white;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  width: 100%;
+}
+
+/* ☁️ Weather App Container */
+.weather-container {
+  background-color: rgba(255, 255, 255, 0.33); /* White background with slight transparency */
+  border-radius: 15px;                       /* Rounded corners */
+  padding: 20px;                             /* Inner spacing */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  display: flex;
+  flex-direction: column;
+  align-items: center;                       /* Center the content */
+  width: 1150px;                              /* Fixed width */
+  margin: 20px auto;  
+}
+
+
+/* 🌟 App Title */
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #d44d0f,#29a304, #1e5086);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+}
+
+/* 🌍 Select Dropdowns */
+.country-select, .city-select {
+  width: 400px;
+  font-size: 18px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.2); /* Glass effect */
+  color: #363636;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.country-select:focus, .city-select:focus {
+  border-color: #ff99ac;
+  outline: none;
+}
+
+/* 🔍 Search Button */
+.search-button {
+  padding: 12px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  background: linear-gradient(45deg, #ff9800, #ff5722) !important;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, background 0.3s;
+  width: 400px;
+  
+}
+
+.search-button:hover {
+  transform: scale(1.03);
+  background: linear-gradient(45deg, #e68900, #d84315);
+}
+
+.search-button:disabled {
+  background: gray;
+  cursor: not-allowed;
+}
+
+/* 🌦️ Weather Card */
+.weather-card {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+  width: 85%;
+  max-width: 400px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.weather-card:hover {
+  transform: translateY(-5px);
+}
+
+.weather-card h2 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.weather-card h3 {
+  font-size: 22px;
+  color: #ffeb3b;
+}
+
+.weather-card p {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.weather-icon {
+  width: 100px;
+}
+
+/* ❌ No Data Message */
+.no-data {
+  font-size: 20px;
+  color: #4f4f4f;
+  font-weight: bold;
+}
+
+/* 💖 Favorite Button */
+.favorite-button {
+  padding: 12px 15px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #ff3b2e;
+  height: 50px;
+  align-items: center;
+display: flex;
+background: none;
+
+}
+
+/* .favorite-button:hover {
+  background: #ff3b2e;
+  color: white;
+} */
+
+/* ❤️ Filled Heart */
+.favorite-button.favorited {
+  background: transparent;
+  border: none;
+}
+
+.heart-icon {
+  font-size: 28px;
+  color: red;
+}
+
+/* 📌 Favorites Section */
+.favorites-container {
+  text-align: center;
+  margin-top: 0;
+}
+
+/* ⭐ Favorites Button */
+.favorites-button {
+  color: white;
+  border: none;
+  padding: 0 18px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: none;
+  
+}
+
+.favorites-button:hover {
+  color: rgb(33, 111, 129)
+}
+
+/* ⭐ Favorites List */
+.favorites-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+  opacity: 0;
+  padding-bottom: 10px;
+
+}
+
+.favorites-list.show {
+  max-height: 300px;
+  opacity: 1;
+}
+
+
+
+/* ❌ Remove Favorite Button */
+.weather-delete-button {
+  border: none;
+  padding: 1px 1px;
+  font-size: 22px;
+  color: #403f3f ;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  align-items: center;
+  display: flex;
+  background: none;
+}
+
+.weather-delete-button:hover {
+  background: #d32f2f;
+}
+
+.favorite-item {
+  padding: 8px 15px; /* More padding for better spacing */
+  margin: 0 2px; /* Balanced margin */
+  height: 60px; /* Adjusted height */
+  border-radius: 10px; /* Softer rounded corners */
+  justify-content: space-between; /* Space items evenly */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  cursor: pointer;
+  position: relative;
+  color: #403f3f;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+.favorite-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+.favorite-item p{
+margin: 0;
+}
+
+
+
+/* Optional: Adding an animated glowing effect */
+@keyframes glowing {
+  0% { box-shadow: 0 0 5px #1abc9c; }
+  50% { box-shadow: 0 0 20px #1abc9c; }
+  100% { box-shadow: 0 0 5px #1abc9c; }
+}
+
+.favorite-item.glow {
+  animation: glowing 1.5s infinite alternate;
+}
+

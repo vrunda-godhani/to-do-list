@@ -1,0 +1,297 @@
+.me-back {
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+  color: #000000;
+  top: 0;
+  right: 0;
+  position: fixed;
+
+}
+
+.me-h1 {
+  text-align: center;
+  color: #00796b;
+  margin-bottom: 2rem;
+}
+
+.user-info {
+  transition: all 0.3s ease-in-out;
+  padding: 1rem;
+  border-radius: 1rem;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+}
+
+
+.me-popup {
+  font-family: 'Segoe UI', sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5); /* Dimmed background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999; /* Ensure it's above everything else */
+}
+
+.me-popup-content {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px 20px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 1000; /* Higher than overlay if needed */
+  cursor: context-menu;
+}
+
+
+.avatar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: context-menu;
+}
+
+.avatar-container .MuiAvatar-root {
+  width: 100px;
+  height: 100px;
+  font-size: 36px;
+}
+
+.user-details {
+  text-align: center;
+  margin: 10px 0;
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+}
+
+/* .edit-btn {
+  display: block;
+  margin: 10px auto;
+  padding: 8px 20px;
+  background-color: #d0e8ff;
+  color: #000;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+*/
+/* .edit-options {
+  text-align: center;
+  margin-bottom: 0;
+}  */
+.edit-icon-btn {
+  position: absolute;
+  bottom: -2px;
+  right: 0px;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  padding: 6px;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.edit-icon-btn:hover {
+  background-color: #f0f0f0;
+}
+
+.option-btn {
+  margin: 5px 8px;
+  padding: 6px 16px;
+  background-color: #f0f4ff;
+  color: #333;
+  border: none;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.delete-btn {
+  background-color: #ffe5e5;
+  color: #c00;
+}
+
+.me-task-btn,
+.task-completion,
+.me-task-hist 
+/* .close-btn  */
+{
+  /* display: block; */
+  box-sizing: border-box; /* Ensure padding doesn't overflow */
+  width: 100%;
+  margin: 4px 0;
+  padding: 10px 15px;
+  font-weight: 600;
+  text-align: left;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+
+.me-task-btn {
+  background-color: #e9fdf1;
+  color: #1a5730;
+}
+
+.task-completion {
+  background-color: #fff4da;
+  color: #8d5b00;
+}
+
+.me-task-hist {
+  background-color: #f1edff;
+  color: #3d2e8a;
+}
+
+.me-logout {
+  margin-top: 4px;
+  width: 100%;
+  padding: 10px;
+  background-color: #ffe5e5;
+  color: #c00;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.close-btn {
+  margin-top: 4px;
+  width: 100%;
+  padding: 10px;
+  background-color: #f4f4f4;
+  color: #333;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px; /* Space between buttons */
+}
+
+.me-logout,
+.close-btn {
+  flex: 1; /* Equal width */
+  padding: 10px 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.progress-section {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.task-stats-row {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.task-count-item {
+  text-align: center;
+}
+
+.task-count {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.task-label {
+  font-size: 12px;
+  color: #777;
+}
+
+.graph-text-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #00796b;
+  cursor: pointer;
+}
+
+.task-stats-row {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.task-count-item {
+  background-color: #e0f2f1;
+  border-radius: 12px;
+  /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+  flex: 1 1 30%;
+  text-align: center;
+  padding: 5px;
+}
+
+.task-count {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #00796b;
+  margin: 7px;
+}
+
+.task-label {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 5px;
+}
+.progress-section {
+  text-align: center;
+  padding: 1rem;
+  background-color: #f1f8f9;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  width: 100%;
+}
+.user-info-text {
+  color: #4c4c4c;
+  font-weight: 500;
+background: none;
+  border-radius: 12px;
+  text-align: center;
+  width: 100%;
+  padding: 2px 15px;
+  border: none;
+  cursor:context-menu;
+  margin: 0px 0;
+}
+ /* .text-p2{
+  background-color: #e6f0ff;
+  color: #1e4f91;
+ 
+} */
+.avatar-bg{
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.108);
+border-radius: 12px;
+margin-bottom: 6px;
+}
+
+ 
+
