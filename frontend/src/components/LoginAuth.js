@@ -10,11 +10,8 @@ const LoginAuth = ({ onSuccess }) => {
     try {
       // ✅ Send Google token to backend for verification
       // const res = await axios.post("http://localhost:5000/google-login", { token: googleToken });
-<<<<<<< HEAD
-const res = await axios.post("https://to-do-list-production-7667.up.railway.app/google-login", { token: googleToken });
-=======
       const res = await axios.post("https://to-do-list-production-7667.up.railway.app/google-login", { token: googleToken });
->>>>>>> ee1faeb7fc573c8664dbcb45bc7552854c4c2a65
+      // const res = await axios.post("https://to-do-list-production-7667.up.railway.app/google-login", { token: googleToken });
       
 
 

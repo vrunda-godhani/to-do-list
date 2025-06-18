@@ -6,6 +6,8 @@
 
   "private": true,
 
+  "homepage": "https://vrunda-godhani.github.io/to-do-list",
+
   "dependencies": {
 
     "@emotion/react": "^11.14.0",
@@ -78,11 +80,7 @@
 
     "predeploy": "npm run build",
 
-<<<<<<< HEAD
-  "deploy": "gh-pages -d build",
-=======
-  "deploy": "gh-pages -d build --no-clean",
->>>>>>> ee1faeb7fc573c8664dbcb45bc7552854c4c2a65
+    "deploy": "gh-pages -d build",
 
     "build": "react-scripts build",
 
