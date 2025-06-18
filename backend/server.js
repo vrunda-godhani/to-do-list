@@ -128,10 +128,7 @@ const authenticateToken = (req, res, next) => {
       res.status(403).json({ message: "Invalid token." });
     }
   };
-  app.get("/health", (req, res) => {
-  res.send("✅ Health OK!");
-});
-
+  
   
   app.get("/tasks", authenticateToken, (req, res) => {
     db.query("SELECT * FROM tasks WHERE user_id = ?", [req.userId], (err, results) => {
@@ -772,11 +769,12 @@ const storage = multer.diskStorage({
   
     res.status(200).json({ message: "Image uploaded successfully", imageUrl });
   });
-    // ✅ Healthcheck endpoint for Railway
-app.get("/", (req, res) => {
-  res.send("✅ Backend is running!");
+    app.get("/", (req, res) => {
+  res.send("Backend is running!");
 });
-
+app.get("/health", (req, res) => {
+  res.status(200).send("Healthy");
+});
 
 // Start Server
 app.listen(PORT, () => {
