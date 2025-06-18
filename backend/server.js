@@ -41,7 +41,11 @@ if (!JWT_SECRET) {
 
 app.use(
   cors({
-    origin: ["https://to-do-list-eta-liart-42.vercel.app"],
+    // origin: ["https://to-do-list-eta-liart-42.vercel.app"],
+    origin: [
+  "https://to-do-list-eta-liart-42.vercel.app",
+  "http://localhost:3000"
+],
     methods: "GET,POST,PUT,DELETE",
     allowedHeaders: "Content-Type,Authorization",
   })
@@ -124,6 +128,10 @@ const authenticateToken = (req, res, next) => {
       res.status(403).json({ message: "Invalid token." });
     }
   };
+  app.get("/health", (req, res) => {
+  res.send("✅ Health OK!");
+});
+
   
   app.get("/tasks", authenticateToken, (req, res) => {
     db.query("SELECT * FROM tasks WHERE user_id = ?", [req.userId], (err, results) => {
@@ -764,7 +772,11 @@ const storage = multer.diskStorage({
   
     res.status(200).json({ message: "Image uploaded successfully", imageUrl });
   });
-    
+    // ✅ Healthcheck endpoint for Railway
+app.get("/", (req, res) => {
+  res.send("✅ Backend is running!");
+});
+
 
 // Start Server
 app.listen(PORT, () => {
