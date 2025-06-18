@@ -1,0 +1,90 @@
+# for button style 
+.delete-title{
+  padding: 0.5rem 1rem;
+ 
+  align-items: center;
+    background-color: #fee6e3;
+    border: 2px solid #111;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #111;
+    cursor: pointer;
+    display: flex;
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    height: 48px;
+    justify-content: center;
+    line-height: 24px;
+    max-width: 100%;
+    padding: 0 25px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+.delete-title::after {
+  background-color: #111;
+  border-radius: 8px;
+  content: "";
+  display: block;
+  height: 48px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform .2s ease-out;
+  z-index: -1;
+}
+.delete-title:hover::after {
+  transform: translate(-0.1%, -0.1%); /* Moves the background to the top-left (cross side) */
+  opacity: 0; /* Fades the background out */
+}
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------
+  .week-button,
+  .select-title {
+    appearance: button;
+    background-color: #000;
+    background-image: none;
+    border: 1px solid #000;
+    border-radius: 8px;
+    box-shadow: #fff 4px 4px 0 0, #000 4px 4px 0 1px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+    margin: 0 4px 10px 0;
+    overflow: visible;
+    padding: 7px 30px;
+    text-align: center;
+    text-transform: none;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+  }
+
+
+  /* Simulate button press on click */
+  .week-button:active, .select-title:active {
+    transform: translate(2px, 2px);
+    box-shadow: #fff 2px 2px 0 0, #000 2px 2px 0 1px;
+  }

@@ -1,0 +1,133 @@
+/* Styling the login box */
+
+
+form {
+  display: flex;
+  flex-direction: column;  /* Stacks child elements vertically */
+  align-items: center;     /* Centers items horizontally within the form */
+
+} 
+.login-pos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+
+}
+.box {
+  width: 400px;
+  /* max-width: 350px; */
+  padding: 30px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  
+  }
+
+
+  
+  /* Login form title */
+  .lr-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #495057;
+  }
+  
+  /* Styling for input group */
+  .input-group-container {
+    margin-bottom: 15px;
+  }
+  
+  .input-group {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    margin-top: 7px;
+  }
+  
+  .input-group-text {
+    background-color: #e9ecef;
+    border: none;
+    padding: 10px;
+  }
+  
+  .form-control {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 16px;
+    margin: 0;
+  }
+  
+  .form-control:focus {
+    box-shadow: none;
+    border: 1px solid #007bff;
+    border-radius: 5px !important;
+  }
+  
+  /* Login button styling */
+  .lr-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background-color: #85bbf4;
+    border: none;
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer; 
+  }
+  
+  .lr-btn:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+  }
+  
+  /* Error message */
+  .text-danger {
+    color: #dc3545;
+    text-align: center;
+    margin-top: 10px;
+  }
+  .toggle-btn{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: white;
+  }
+  .auth-page{
+    display: flex;
+    justify-content: center;  
+    align-items: center;     
+    height: 100vh;   
+  }
+  .google-auth {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .google-auth > div {
+    width: 100%;
+    max-width: 250px; /* Adjusts width */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Adds subtle shadow */
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+  }
+  .google-login{
+    display: flex ;
+    text-align: center ;
+    align-items: center ;
+    gap: 0;
+    width: 100%;
+  }
+  .forgot-pin{
+    margin: 0;
+    padding-top: 5px;
+  }

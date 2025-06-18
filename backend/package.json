@@ -1,0 +1,33 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "add": "^2.0.6",
+    "bcryptjs": "^3.0.2",
+    "body-parser": "^1.20.3",
+    "button": "^1.1.1",
+    "card": "^2.5.4",
+    "checkbox": "^0.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^4.21.2",
+    "google-auth-library": "^9.15.1",
+    "input": "^1.0.1",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.2",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.12.0",
+    "node-cron": "^3.0.3",
+    "nodemailer": "^6.10.1",
+    "punycode": "^2.3.1",
+    "shadcn-ui": "^0.9.5"
+  }
+}

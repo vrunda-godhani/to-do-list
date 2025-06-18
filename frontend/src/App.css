@@ -1,0 +1,41 @@
+.App {
+  text-align: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+ background-image:url('https://i.pinimg.com/736x/43/bb/a9/43bba9ff0642be0905a75a25ee1f3cd0.jpg') ;
+  padding: 0;
+  margin: 0; 
+  height: 100vh;
+  background-repeat: repeat;  /* Ensures the image repeats */
+
+  /* position: fixed; */
+}
+/* calender css */
+
+
+input {
+  padding: 5px;
+  margin-right: 10px;
+}
+
+button {
+  padding: 5px 10px;
+  margin-left: 10px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  padding: 5px ;
+  gap: 0;
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+}
+h1{
+  margin-top: 0px;
+}
+
+

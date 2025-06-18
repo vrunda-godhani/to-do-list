@@ -1,0 +1,138 @@
+{
+
+  "name": "to-do",
+
+  "version": "0.1.0",
+
+  "private": true,
+
+  "dependencies": {
+
+    "@emotion/react": "^11.14.0",
+
+    "@emotion/styled": "^11.14.0",
+
+    "@fullcalendar/daygrid": "^6.1.15",
+
+    "@fullcalendar/interaction": "^6.1.15",
+
+    "@fullcalendar/react": "^6.1.15",
+
+    "@fullcalendar/timegrid": "^6.1.15",
+
+    "@mui/material": "^6.4.6",
+
+    "@react-google-maps/api": "^2.20.6",
+
+    "@react-oauth/google": "^0.12.1",
+
+    "axios": "^1.8.3",
+
+    "bootstrap": "^5.3.3",
+
+    "cra-template": "1.2.0",
+
+    "dayjs": "^1.11.13",
+
+    "express": "^4.21.2",
+
+    "gh-pages": "^6.3.0",
+
+    "jwt-decode": "^4.0.0",
+
+    "leaflet": "^1.9.4",
+
+    "react": "^19.0.0",
+
+    "react-bootstrap": "^2.10.7",
+
+    "react-calendar": "^5.1.0",
+
+    "react-dom": "^19.0.0",
+
+    "react-icons": "^5.5.0",
+
+    "react-leaflet": "^5.0.0",
+
+    "react-router-dom": "^7.1.1",
+
+    "react-scripts": "5.0.1",
+
+    "react-select": "^5.10.1",
+
+    "react-share": "^5.2.0",
+
+    "react-toastify": "^11.0.2",
+
+    "react-tooltip": "^5.28.0",
+
+    "recharts": "^2.15.1",
+
+    "web-vitals": "^4.2.4"
+
+  },
+
+  "scripts": {
+
+    "start": "react-scripts start",
+
+    "predeploy": "npm run build",
+
+<<<<<<< HEAD
+  "deploy": "gh-pages -d build",
+=======
+  "deploy": "gh-pages -d build --no-clean",
+>>>>>>> ee1faeb7fc573c8664dbcb45bc7552854c4c2a65
+
+    "build": "react-scripts build",
+
+    "test": "react-scripts test",
+
+    "eject": "react-scripts eject"
+
+  },
+
+  "eslintConfig": {
+
+    "extends": [
+
+      "react-app",
+
+      "react-app/jest"
+
+    ]
+
+  },
+
+  "browserslist": {
+
+    "production": [
+
+      ">0.2%",
+
+      "not dead",
+
+      "not op_mini all"
+
+    ],
+
+    "development": [
+
+      "last 1 chrome version",
+
+      "last 1 firefox version",
+
+      "last 1 safari version"
+
+    ]
+
+  },
+
+  "devDependencies": {
+
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+
+  }
+
+}
+
