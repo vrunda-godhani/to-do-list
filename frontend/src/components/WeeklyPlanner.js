@@ -9,8 +9,8 @@ import "react-tooltip/dist/react-tooltip.css";
 import { FaMinus, FaCheck } from "react-icons/fa";
 
 const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-// const API_URL = "http://localhost:5000";
-const API_URL = "https://to-do-list-production-7667.up.railway.app";
+const API_URL = "http://localhost:5000";
+// const API_URL = "https://to-do-list-production-7667.up.railway.app";
 
 export default function WeeklyPlanner() {
   const [planner, setPlanner] = useState({});

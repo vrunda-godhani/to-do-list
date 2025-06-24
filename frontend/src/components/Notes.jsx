@@ -7,9 +7,9 @@ import Menu from "./Menu"; // Import Menu component
 import { FiList, FiGrid } from "react-icons/fi";
 import { navigate } from "react-router-dom"; // Import useNavigate
 
-// const API_URL = "http://localhost:5000/notes"; // Backend API URL
+const API_URL = "http://localhost:5000/notes"; // Backend API URL
 
-const API_URL = "https://to-do-list-production-7667.up.railway.app/notes";
+// const API_URL = "https://to-do-list-production-7667.up.railway.app/notes";
 
 
 const Notes = ( {handleLogout} ) => {
@@ -81,7 +81,7 @@ const Notes = ( {handleLogout} ) => {
       });
 
       // Remove the note from state without modifying other IDs
-      const updatedNotes = notes.filter((note) => note.id !== id);
+      const updatedNotes = notes.filter((note) => note._id !== id);
       setNotes(updatedNotes);
       localStorage.setItem("notes", JSON.stringify(updatedNotes));
 
@@ -90,7 +90,7 @@ const Notes = ( {handleLogout} ) => {
 
       if (error.response?.status === 404) {
         console.warn("⚠️ The note was not found on the server. Removing it from local state.");
-        const updatedNotes = notes.filter((note) => note.id !== id);
+        const updatedNotes = notes.filter((note) => note._id !== id);
         setNotes(updatedNotes);
         localStorage.setItem("notes", JSON.stringify(updatedNotes));
       }
@@ -118,7 +118,7 @@ const Notes = ( {handleLogout} ) => {
       });
 
       const updatedNotes = notes.map((note) =>
-        note.id === currentNote.id ? { ...note, text: noteText } : note
+        note._id === currentNote._id ? { ...note, text: noteText } : note
       );
 
       setNotes(updatedNotes);

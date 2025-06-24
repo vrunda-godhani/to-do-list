@@ -8,8 +8,8 @@ import "./Login.css";
 import GoogleAuth from "./GoogleAuth"; // Import GoogleAuth component
 import {  FaEye, FaEyeSlash } from "react-icons/fa";
 
-// const API_URL = "http://localhost:5000"; // Ensure this matches your backend
-const API_URL = "https://to-do-list-production-7667.up.railway.app";
+const API_URL = "http://localhost:5000"; // Ensure this matches your backend
+// const API_URL = "https://to-do-list-production-7667.up.railway.app";
 
 const Register = ({ onRegisterSuccess, togglePage }) => {
   const [email, setEmail] = useState("");
@@ -29,7 +29,7 @@ const Register = ({ onRegisterSuccess, togglePage }) => {
         const token = response.data.token;
 
         if (token) {
-          localStorage.setItem("token", token);
+          localStorage.setItem("authToken", token);
           toast.success("Registration successful!");
 
           if (onRegisterSuccess) {

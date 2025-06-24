@@ -17,8 +17,8 @@ import "./Me.css";
 import Logo from './logo';
 import "../../photo/icon.png";
 
-// const API_URL = "http://localhost:5000";
-const API_URL = "https://to-do-list-production-7667.up.railway.app";
+const API_URL = "http://localhost:5000";
+// const API_URL = "https://to-do-list-production-7667.up.railway.app";
 
 export default function Me({ handleLogout }) {
   const navigate = useNavigate();
