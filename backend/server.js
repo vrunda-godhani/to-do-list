@@ -2,7 +2,7 @@
 //mysql version
 const express = require("express");
 const mysql = require("mysql2");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -12,7 +12,7 @@ require("./reminderScheduler.js"); // ✅ Start cron job
 
 
 const app = express();
-const PORT = process.env.DB_PORT || 3306
+const PORT = process.env.PORT || 5000
 const JWT_SECRET = process.env.JWT_SECRET_KEY;
 const { OAuth2Client } = require("google-auth-library"); // ✅ Import Google Auth Library
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID); // ✅ Use env variable
@@ -48,6 +48,7 @@ app.use(express.json());
 const db = mysql.createPool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
+    port: process.env.DB_PORT || 3306,  // ✅ Include this
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
     waitForConnections: true,
