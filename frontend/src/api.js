@@ -4,7 +4,7 @@ import axios from "axios";
 const axiosInstance = axios.create({
 
   // baseURL: "http://localhost:5000/api", // Change this to your backend URL
-  baseURL: "https://to-do-list-production-7667.up.railway.app/api", // Change this to your backend URL
+  baseURL: "to-do-list-production-a8c8.up.railway.app", // Change this to your backend URL
 
 });
 
