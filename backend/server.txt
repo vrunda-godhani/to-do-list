@@ -1,5 +1,6 @@
 
 // server.js (MongoDB Version)
+# MONGO_URI=mongodb+srv://vrundamongo123:VrundaMongo01@cluster0.wctv9ru.mongodb.net/tododb?retryWrites=true&w=majority&appName=Cluster0
 
 
 
