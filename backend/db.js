@@ -1,20 +1,15 @@
-// db.js
 const mysql = require("mysql2/promise");
+require("dotenv").config();
 
-const dbUrl = new URL(process.env.DATABASE_URL);
-
-const pool = mysql.createPool({
-  host: dbUrl.hostname,
-  user: dbUrl.username,
-  password: dbUrl.password,
-  database: dbUrl.pathname.replace("/", ""),
-  port: dbUrl.port,
-  ssl: {
-    rejectUnauthorized: false,
-  },
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0,
+const db = mysql.createPool({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    port: process.env.DB_PORT || 3306,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    ssl: {
+        rejectUnauthorized: false,
+    },
 });
 
-module.exports = pool;
+module.exports = db;
