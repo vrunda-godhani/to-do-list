@@ -12,7 +12,7 @@ require("./reminderScheduler.js"); // ✅ Start cron job
 
 
 const app = express();
-const PORT = process.env.PORT || 5000
+const PORT = 5000;
 const JWT_SECRET = process.env.JWT_SECRET_KEY;
 const { OAuth2Client } = require("google-auth-library"); // ✅ Import Google Auth Library
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID); // ✅ Use env variable
@@ -23,9 +23,10 @@ if (!JWT_SECRET) {
 }
 
 // Enable CORS for frontend
+
 app.use(
     cors({
-origin: ["http://localhost:3000", "https://to-do-list-fawn-kappa-56.vercel.app"],
+        origin: ["http://localhost:3000", "https://to-do-list-fawn-kappa-56.vercel.app"],
         methods: "GET,POST,PUT,DELETE",
         allowedHeaders: "Content-Type,Authorization",
     })
@@ -45,6 +46,7 @@ app.use(express.json());
 //     connectionLimit: 10,
 //     queueLimit: 0,
 // });
+
 const db = mysql.createPool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
@@ -55,7 +57,7 @@ const db = mysql.createPool({
     connectionLimit: 10,
     queueLimit: 0,
 });
-require("dotenv").config();
+
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
