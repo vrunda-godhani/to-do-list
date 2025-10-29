@@ -60,14 +60,28 @@ app.use(express.json());
 // });
 
 
-const db = mysql.createPool({
-  host: process.env.DB_HOST,
+const connectionConfig = {
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
-  socketPath: process.env.DB_HOST.includes("/cloudsql/") ? process.env.DB_HOST : undefined,
-  port: process.env.DB_PORT || 3306,
-});
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
+};
+
+if (process.env.DB_HOST && process.env.DB_HOST.startsWith("/cloudsql/")) {
+  // ✅ Cloud SQL via Unix socket
+  connectionConfig.socketPath = process.env.DB_HOST;
+  console.log("🔗 Connecting via Cloud SQL socket path:", process.env.DB_HOST);
+} else {
+  // ✅ Public IP connection
+  connectionConfig.host = process.env.DB_HOST;
+  connectionConfig.port = process.env.DB_PORT || 3306;
+  console.log("🌐 Connecting via public IP:", process.env.DB_HOST);
+}
+
+const db = mysql.createPool(connectionConfig);
+
 
 
 const multer = require("multer");
