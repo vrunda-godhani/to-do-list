@@ -12,7 +12,7 @@ require("./reminderScheduler.js"); // ✅ Start cron job
 
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 8080;
 const JWT_SECRET = process.env.JWT_SECRET_KEY;
 const { OAuth2Client } = require("google-auth-library"); // ✅ Import Google Auth Library
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID); // ✅ Use env variable
@@ -25,12 +25,13 @@ if (!JWT_SECRET) {
 // Enable CORS for frontend
 
 app.use(
-    cors({
-        origin: ["http://localhost:3000", "https://to-do-list-fawn-kappa-56.vercel.app"],
-        methods: "GET,POST,PUT,DELETE",
-        allowedHeaders: "Content-Type,Authorization",
-    })
+  cors({
+    origin: process.env.CLIENT_URL || "http://localhost:3000",
+    methods: "GET,POST,PUT,DELETE",
+    allowedHeaders: "Content-Type,Authorization",
+  })
 );
+
 
 // Middleware
 app.use(bodyParser.json());
@@ -50,7 +51,7 @@ app.use(express.json());
 const db = mysql.createPool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
-    port: process.env.DB_PORT || 3306,  // ✅ Include this
+    PORT: process.env.PORT || 3306,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
     waitForConnections: true,
