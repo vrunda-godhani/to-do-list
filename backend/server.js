@@ -738,7 +738,7 @@ const storage = multer.diskStorage({
       return res.status(400).json({ message: "No file uploaded" });
     }
   
-    const imageUrl = `http://localhost:5000/uploads/${req.file.filename}`;
+    const imageUrl = `http://localhost:8080/uploads/${req.file.filename}`;
   
     // Optional: Save the image URL to the user's record in DB here
   
