@@ -9,7 +9,7 @@ import { navigate } from "react-router-dom"; // Import useNavigate
 
 // const API_URL = "http://localhost:5000/notes"; // Backend API URL
 
-const API_URL = "to-do-list-production-a8c8.up.railway.app/notes";
+const API_URL = "https://todo-backend-7hduq2n6dq-asia-south1.run.app/notes";
 
 
 const Notes = ( {handleLogout} ) => {

@@ -10,7 +10,7 @@ import { FaMinus, FaCheck } from "react-icons/fa";
 
 const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 // const API_URL = "http://localhost:5000";
-const API_URL = "to-do-list-production-a8c8.up.railway.app";
+const API_URL = "https://todo-backend-7hduq2n6dq-asia-south1.run.app";
 
 export default function WeeklyPlanner() {
   const [planner, setPlanner] = useState({});

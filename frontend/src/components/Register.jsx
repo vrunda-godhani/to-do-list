@@ -9,7 +9,7 @@ import GoogleAuth from "./GoogleAuth"; // Import GoogleAuth component
 import {  FaEye, FaEyeSlash } from "react-icons/fa";
 
 // const API_URL = "http://localhost:5000"; // Ensure this matches your backend
-const API_URL = "to-do-list-production-a8c8.up.railway.app";
+const API_URL = "https://todo-backend-7hduq2n6dq-asia-south1.run.app";
 
 const Register = ({ onRegisterSuccess, togglePage }) => {
   const [email, setEmail] = useState("");

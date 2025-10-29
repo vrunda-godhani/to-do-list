@@ -25,7 +25,7 @@ import "./App.css";
 // import GoogleAuth from "./components/GoogleAuth.js"
 
 // const API_URL = "http://localhost:5000"; //your backend URL
-const API_URL = "to-do-list-production-a8c8.up.railway.app";
+const API_URL = "https://todo-backend-7hduq2n6dq-asia-south1.run.app";
 const CLIENT_ID = "408906991640-pec53dajbfu7obs7b1134910hu98ierl.apps.googleusercontent.com"; // ✅ Add your Google Client ID
 
 const PrivateRoute = ({ element }) => {
