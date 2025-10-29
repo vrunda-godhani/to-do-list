@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 // import "./ForgotPin.jsx";
 
 // const API_URL = "http://localhost:5000"; // Ensure this matches your backend
-const API_URL = "https://todo-backend-7hduq2n6dq-asia-south1.run.app";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const Login = ({ onLoginSuccess, togglePage }) => {
   const [email, setEmail] = useState("");

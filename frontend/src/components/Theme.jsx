@@ -13,7 +13,7 @@ import Menu from "./Menu";
 import axios from "axios"
 // const API_URL = "http://localhost:5000"; //your backend URL
 
-const API_URL = "https://todo-backend-7hduq2n6dq-asia-south1.run.app";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const Theme = ({ tasks, addTask }) => {
     const [showPopup, setShowPopup] = useState(false);

@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 
 // const API_URL = "http://localhost:5000"; // Update with your backend URL
-const API_URL = "https://todo-backend-7hduq2n6dq-asia-south1.run.app";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const Tskhistory = () => {
   const [tasks, setTasks] = useState([]);

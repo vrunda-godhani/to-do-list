@@ -9,7 +9,7 @@ const LoginAuth = ({ onSuccess }) => {
 
     try {
       // ✅ Send Google token to backend for verification
-      const res = await axios.post("https://todo-backend-7hduq2n6dq-asia-south1.run.app/google-login", { token: googleToken });
+      const res = await axios.post("import.meta.env.VITE_API_URL/google-login", { token: googleToken });
       // const res = await axios.post("https://to-do-list-production-7667.up.railway.app/google-login", { token: googleToken });
       // const res = await axios.post("https://to-do-list-production-7667.up.railway.app/google-login", { token: googleToken });
       

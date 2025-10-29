@@ -8,7 +8,7 @@ import { FaHeart, FaRegHeart } from "react-icons/fa"; // Import heart icons
 import { IoMdRemoveCircleOutline } from "react-icons/io";
 import { GrMapLocation } from "react-icons/gr";
 
-const API_URL = "https://todo-backend-7hduq2n6dq-asia-south1.run.app";
+const API_URL = import.meta.env.VITE_API_URL;
 
 // const API_URL = "http://localhost:5000";
 const API_KEY = "17535e06f7d48c5b09c1a3f767906525";
