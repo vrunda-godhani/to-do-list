@@ -763,7 +763,8 @@ const storage = multer.diskStorage({
       return res.status(400).json({ message: "No file uploaded" });
     }
   
-    const imageUrl = `http://localhost:8080/uploads/${req.file.filename}`;
+    // const imageUrl = `http://localhost:8080/uploads/${req.file.filename}`;
+const imageUrl = `${process.env.CLIENT_URL.replace('3000', '8080') || 'https://your-cloud-run-url'}/uploads/${req.file.filename}`;
   
     // Optional: Save the image URL to the user's record in DB here
   
@@ -772,6 +773,14 @@ const storage = multer.diskStorage({
     
 
 // Start Server
+// app.listen(PORT, () => {
+//     console.log(`Server running on http://localhost:${PORT}`);
+// });
+app.get("/", (req, res) => {
+  res.send("✅ To-Do List Backend is running successfully on Google Cloud Run!");
+});
+
+
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`✅ Server running on port ${PORT}`);
 });
