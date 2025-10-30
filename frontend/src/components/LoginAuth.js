@@ -9,7 +9,8 @@ const LoginAuth = ({ onSuccess }) => {
 
     try {
       // ✅ Send Google token to backend for verification
-      const res = await axios.post("import.meta.env.VITE_API_URL/google-login", { token: googleToken });
+     const res =  await axios.get(`${process.env.REACT_APP_API_URL}/google-login`, { token: googleToken });
+
       // const res = await axios.post("https://to-do-list-production-7667.up.railway.app/google-login", { token: googleToken });
       // const res = await axios.post("https://to-do-list-production-7667.up.railway.app/google-login", { token: googleToken });
       

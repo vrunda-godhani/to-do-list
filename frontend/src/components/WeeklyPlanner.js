@@ -10,7 +10,11 @@ import { FaMinus, FaCheck } from "react-icons/fa";
 
 const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 // const API_URL = "http://localhost:5000";
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = process.env.REACT_APP_API_URL;
+console.log("Backend API URL:", API_URL); // ✅ should print your backend URL
+
+
+
 
 export default function WeeklyPlanner() {
   const [planner, setPlanner] = useState({});

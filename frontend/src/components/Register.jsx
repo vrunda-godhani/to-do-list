@@ -9,7 +9,7 @@ import GoogleAuth from "./GoogleAuth"; // Import GoogleAuth component
 import {  FaEye, FaEyeSlash } from "react-icons/fa";
 
 // const API_URL = "http://localhost:5000"; // Ensure this matches your backend
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL =  process.env.REACT_APP_API_URL;
 
 const Register = ({ onRegisterSuccess, togglePage }) => {
   const [email, setEmail] = useState("");
