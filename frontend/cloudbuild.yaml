@@ -4,7 +4,7 @@ steps:
     [
       'build',
       '-t', 'gcr.io/to-do-list-476608/todo-frontend',
-      '--build-arg', 'VITE_API_URL=https://todo-backend-257603738713.asia-south1.run.app',
+      '--build-arg', 'REACT_APP_API_URL=https://todo-backend-257603738713.asia-south1.run.app',
       '.'
     ]
 images:

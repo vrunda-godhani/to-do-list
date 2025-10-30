@@ -6,9 +6,9 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 
-# ✅ Pass VITE_API_URL dynamically during build
-ARG VITE_API_URL
-ENV VITE_API_URL=$VITE_API_URL
+# ✅ Correct: use REACT_APP_API_URL (CRA only reads REACT_APP_)
+ARG REACT_APP_API_URL
+ENV REACT_APP_API_URL=$REACT_APP_API_URL
 
 RUN npm run build
 
@@ -20,5 +20,6 @@ RUN rm /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 COPY --from=build /app/build /usr/share/nginx/html
+
 EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]
