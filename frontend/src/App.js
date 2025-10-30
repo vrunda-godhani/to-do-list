@@ -26,7 +26,7 @@ import "./App.css";
 
 // const API_URL = "http://localhost:5000"; //your backend URL
 const API_URL = process.env.REACT_APP_API_URL;
-const CLIENT_ID = "408906991640-pec53dajbfu7obs7b1134910hu98ierl.apps.googleusercontent.com"; // ✅ Add your Google Client ID
+const CLIENT_ID = "257603738713-47g5ttbbqb5ivamea6aml3mqiqp0pkrf.apps.googleusercontent.com"; // ✅ Add your Google Client ID
 
 const PrivateRoute = ({ element }) => {
   const isAuthenticated = localStorage.getItem("authToken");

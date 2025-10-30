@@ -6,7 +6,7 @@ import "./Login.css";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import GoogleAuth from "./GoogleAuth"; // Import the new GoogleAuth component
 
-const CLIENT_ID = "408906991640-pec53dajbfu7obs7b1134910hu98ierl.apps.googleusercontent.com";
+const CLIENT_ID = "257603738713-47g5ttbbqb5ivamea6aml3mqiqp0pkrf.apps.googleusercontent.com";
 
 const AuthTogglePage = ({ onLoginSuccess, onRegisterSuccess }) => {
   const [isLoginPage, setIsLoginPage] = useState(true);
