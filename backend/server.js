@@ -24,18 +24,22 @@ if (!JWT_SECRET) {
 
 // Enable CORS for frontend
 
-app.use(
-  cors({
-    origin: [
-      "http://localhost:3000",
-      "https://todo-frontend-257603738713.asia-south1.run.app"
-    ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
-  })
-);
+const allowedOrigins = [
+  'https://todo-frontend-257603738713.asia-south1.run.app',
+  'http://localhost:3000'
+];
 
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.log('Blocked by CORS:', origin);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+}));
 
 // Middleware
 app.use(bodyParser.json());
