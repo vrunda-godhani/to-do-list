@@ -16,6 +16,7 @@ const res = await axios.post(
   { token: googleToken }
 );
 
+console.log(process.env.REACT_APP_API_URL);
 
       if (res.data.success) {
         console.log("Backend Verification Success:", res.data);
