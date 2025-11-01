@@ -26,6 +26,7 @@ import "./App.css";
 
 // const API_URL = "http://localhost:5000"; //your backend URL
 const API_URL = process.env.REACT_APP_API_URL || "https://todo-backend-257603738713.asia-south1.run.app";
+console.log("backend api",API_URL);
 const CLIENT_ID = "257603738713-47g5ttbbqb5ivamea6aml3mqiqp0pkrf.apps.googleusercontent.com"; // ✅ Add your Google Client ID
 
 const PrivateRoute = ({ element }) => {
