@@ -13,9 +13,10 @@ ARG REACT_APP_API_URL
 ARG REACT_APP_GOOGLE_CLIENT_ID
 
 # ✅ Inject build args into environment so React picks them up
+ARG REACT_APP_API_URL
+ARG REACT_APP_GOOGLE_CLIENT_ID
 ENV REACT_APP_API_URL=$REACT_APP_API_URL
 ENV REACT_APP_GOOGLE_CLIENT_ID=$REACT_APP_GOOGLE_CLIENT_ID
-
 # ✅ Now build React app with the environment vars embedded
 RUN npm run build
 
